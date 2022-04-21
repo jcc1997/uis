@@ -1,64 +1,28 @@
 <script setup lang="ts">
-import { useUserStore } from '~/stores/user'
+import Color from 'color'
+import { generateNeuCss } from '../neu/neu'
 
-const user = useUserStore()
-const name = $ref(user.savedName)
+const color = new Color('#f0f0f0')
+generateNeuCss({
+  color,
+})
 
-const router = useRouter()
-const go = () => {
-  if (name)
-    router.push(`/hi/${encodeURIComponent(name)}`)
-}
-
-const { t } = useI18n()
+const checked = ref(false)
 </script>
 
 <template>
-  <div>
-    <div text-4xl>
-      <div i-carbon-campsite inline-block />
-    </div>
-    <p>
-      <a rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank">
-        Vitesse
-      </a>
-    </p>
-    <p>
-      <em text-sm opacity-75>{{ t('intro.desc') }}</em>
-    </p>
-
-    <div py-4 />
-
-    <input
-      id="input"
-      v-model="name"
-      :placeholder="t('intro.whats-your-name')"
-      :aria-label="t('intro.whats-your-name')"
-      type="text"
-      autocomplete="false"
-      p="x4 y2"
-      w="250px"
-      text="center"
-      bg="transparent"
-      border="~ rounded gray-200 dark:gray-700"
-      outline="none active:none"
-      @keydown.enter="go"
-    >
-    <label class="hidden" for="input">{{ t('intro.whats-your-name') }}</label>
-
-    <div>
-      <button
-        btn m-3 text-sm
-        :disabled="!name"
-        @click="go"
-      >
-        {{ t('button.go') }}
-      </button>
+  <div p-12 h-full w-full flex flex-col justify-evenly items-center class="neu-app">
+    <div p-2 h-full w-full rounded-2 flex flex-col justify-evenly relative items-center class="neu-curtain-concave">
+      <NeuButton />
+      <NeuButton :disabled="true" />
+      <NeuButton type="sharp" />
+      <NeuSwitch v-model:checked="checked" />
+      <NeuSwitch v-model:checked="checked" :disabled="true" />
     </div>
   </div>
 </template>
 
 <route lang="yaml">
 meta:
-  layout: home
+  layout: app
 </route>

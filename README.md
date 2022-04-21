@@ -14,8 +14,4 @@ cj97chenjinchao@gmail.com
 
 [Glassmorphism](https://ui.glass/generator/)
 
-Glassmorphism 想象一块毛玻璃 上面印有
-
-1. 更重磨砂的字
-2. 平淡印上去的文字
-3. 带有圆凸起的按钮
+https://www.behance.net/gallery/111647039/Beyond-Neumorphism-Series
