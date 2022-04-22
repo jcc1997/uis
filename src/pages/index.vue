@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import Color from 'color'
-import { generateNeuCss } from '../neu/neu'
+import { importNeuCss } from '../neu/neu'
+
+const isDark = useDark({
+  valueDark: '#2f3136',
+  valueLight: '#f0f0f0',
+})
+
+console.log(isDark.value)
 
 const color = new Color('#f0f0f0')
 // const color = new Color('#2f3136')
-generateNeuCss({
+importNeuCss({
   color,
 })
 

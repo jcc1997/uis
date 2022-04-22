@@ -233,7 +233,7 @@ export function generateNeuClasses(options: Required<NeuOptions>, size?: Size) {
   return result
 }
 
-export function generateNeuCss(options: NeuOptions, id = 'neu') {
+export function importNeuCss(options: NeuOptions, id = 'neu') {
   const _opts = Object.assign({}, default_neu_options, options)
   const { suffix, color } = _opts
   const css_m = generateNeuClasses(_opts)
