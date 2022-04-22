@@ -28,7 +28,7 @@ function click() {
     <div
       absolute transition-transform rounded-full w-5 h-5
       class="neu-switch-handle neu-subject"
-      :class="{'neu-switch__checked': checked, 'neu-concave-no-effects': !disabled}"
+      :class="{'neu-switch__checked': checked, 'neu-concave-shadow-edge': !disabled}"
     />
   </button>
 </template>
@@ -43,10 +43,10 @@ function click() {
     height: 0.25rem;
     margin: 0.5rem;
     border-radius: 0.125rem;
-    background: linear-gradient(to left, transparent 50%, rgba(42, 213, 146, 0.5) 50%, rgb(42, 213, 146, 1));
+    background: linear-gradient(to left, transparent 50%, rgba(var(--success-color), 0.5) 50%, rgb(var(--success-color)));
 }
 .neu-switch.neu-switch__disabled {
-    background-color: var(--disabled-color);
+    background-color: rgb(var(--disabled-color));
     cursor: not-allowed;
 }
 </style>

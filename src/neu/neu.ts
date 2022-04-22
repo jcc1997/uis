@@ -21,6 +21,8 @@ function Math_between(min: number, input: number, max: number) {
 // concave 代表 material 是凸起的
 // convex 代表 material 是凹陷的
 
+// TODO: compute lum
+
 const default_neu_options = {
   suffix: '',
   lum: 0.1,
@@ -205,16 +207,16 @@ export function generateNeuClasses(options: Required<NeuOptions>, size?: Size) {
     'convex-shadow': {
       'box-shadow': `${[...convexShadow].join(', ')};`,
     },
-    'concave-inset': {
+    'concave-edge': {
       'box-shadow': `${[...concaveCurtainEdgeShadow].join(', ')};`,
     },
-    'convex-inset': {
+    'convex-edge': {
       'box-shadow': `${[...convexCurtainEdgeShadow].join(', ')};`,
     },
-    'concave-no-effects': {
+    'concave-shadow-edge': {
       'box-shadow': `${[...concaveCurtainEdgeShadow, ...concaveShadow].join(', ')};`,
     },
-    'convex-no-effects': {
+    'convex-shadow-edge': {
       'box-shadow': `${[...convexCurtainEdgeShadow, ...convexShadow].join(', ')};`,
     },
     // 'glass-concave': {
@@ -239,13 +241,29 @@ export function generateNeuCss(options: NeuOptions, id = 'neu') {
   const css_s = generateNeuClasses(s_options, 's')
   const l_options = generateNeuSizeClasses(_opts, 'l')
   const css_l = generateNeuClasses(l_options, 'l')
+  const isDark = color.isDark()
+
+  // TODO: generate by color
+  const ColorVars = isDark
+    ? {
+      '--disabled-color': '220, 220, 220',
+      '--success-color': '42, 213, 146',
+      '--primary-color': '121, 177, 238',
+    }
+    : {
+      '--disabled-color': '220, 220, 220',
+      '--success-color': '42, 213, 146',
+      '--primary-color': '121, 177, 238',
+    }
+
   loadNeuCss({
     ...css_s,
     ...css_m,
     ...css_l,
     app: {
       'background-color': color,
-      '--disabled-color': 'rgb(220, 220, 220)',
+      ...ColorVars,
+      'color': isDark ? '#fff' : '#000',
     },
     subject: {
       'background-color': color,

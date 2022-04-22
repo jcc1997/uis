@@ -3,11 +3,13 @@ import Color from 'color'
 import { generateNeuCss } from '../neu/neu'
 
 const color = new Color('#f0f0f0')
+// const color = new Color('#2f3136')
 generateNeuCss({
   color,
 })
 
 const checked = ref(false)
+const progress = ref(50)
 </script>
 
 <template>
@@ -18,6 +20,8 @@ const checked = ref(false)
       <NeuButton type="sharp" />
       <NeuSwitch v-model:checked="checked" />
       <NeuSwitch v-model:checked="checked" :disabled="true" />
+      <NeuProgress :progress="progress" />
+      <NeuSlider v-model:percent="progress" />
     </div>
   </div>
 </template>

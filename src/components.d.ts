@@ -8,6 +8,8 @@ declare module '@vue/runtime-core' {
     NeuButton: typeof import('./components/NeuButton.vue')['default']
     NeuButton2: typeof import('./components/NeuButton2.vue')['default']
     NeuButton3: typeof import('./components/NeuButton3.vue')['default']
+    NeuProgress: typeof import('./components/NeuProgress.vue')['default']
+    NeuSlider: typeof import('./components/NeuSlider.vue')['default']
     NeuSwitch: typeof import('./components/NeuSwitch.vue')['default']
     NeuSwitch2: typeof import('./components/NeuSwitch2.vue')['default']
     README: typeof import('./components/README.md')['default']

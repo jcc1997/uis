@@ -47,7 +47,7 @@ const classes = computed(() => {
 
 <style>
 .neu-button.neu-button__disabled {
-  background-color: var(--disabled-color);
+  background-color: rgb(var(--disabled-color));
   cursor: not-allowed;
 }
 </style>
